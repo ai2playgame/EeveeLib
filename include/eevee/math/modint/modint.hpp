@@ -4,91 +4,97 @@
 #include <utility>
 
 namespace eevee {
-template <std::uint_fast64_t Modulus> class Modint {
-    using u64 = std::uint_fast64_t;
+template <std::int_fast64_t Modulus> class ModInt {
+    using i64 = std::int_fast64_t;
 
 public:
-    u64 num;
+    i64 num;
 
-    constexpr Modint(const u64 x = 0) noexcept
-        : num(x % Modulus) {}
-    constexpr u64 &value() noexcept { return num; }
-    constexpr const u64 &value() const noexcept { return num; }
+    constexpr ModInt(const i64 x = 0) noexcept
+        : num(x>=0 ? x % Modulus : (Modulus - (-x) % Modulus ) % Modulus) {}
+    constexpr i64 &value() noexcept { return num; }
+    constexpr const i64 &value() const noexcept { return num; }
 
     /* operator */
-    constexpr Modint operator+(const Modint &rhs) const noexcept {
-        return Modint(*this) += rhs;
+    constexpr ModInt operator-() const noexcept { return ModInt(-num); }
+    constexpr ModInt operator+(const ModInt &rhs) const noexcept {
+        return ModInt(*this) += rhs;
     }
-    constexpr Modint operator-(const Modint &rhs) const noexcept {
-        return Modint(*this) -= rhs;
+    constexpr ModInt operator-(const ModInt &rhs) const noexcept {
+        return ModInt(*this) -= rhs;
     }
-    constexpr Modint operator*(const Modint &rhs) const noexcept {
-        return Modint(*this) *= rhs;
+    constexpr ModInt operator*(const ModInt &rhs) const noexcept {
+        return ModInt(*this) *= rhs;
     }
-    constexpr Modint operator/(const Modint &rhs) const noexcept {
-        return Modint(*this) /= rhs;
+    constexpr ModInt operator/(const ModInt &rhs) const noexcept {
+        return ModInt(*this) /= rhs;
     }
-    constexpr Modint &operator+=(const Modint &rhs) noexcept {
-        num += rhs.num;
-        if (num >= Modulus) {
-            num -= Modulus;
-        }
+    constexpr ModInt &operator+=(const ModInt &rhs) noexcept {
+        if ((num += rhs.num) >= Modulus) num -= Modulus;
         return *this;
     }
-    constexpr Modint &operator-=(const Modint &rhs) noexcept {
-        if (num < rhs.num) {
-            num += Modulus;
-        }
-        num -= rhs.num;
+    constexpr ModInt &operator-=(const ModInt &rhs) noexcept {
+        if ((num += Modulus - rhs.num) >= Modulus) num -= Modulus;
         return *this;
     }
-    constexpr Modint &operator*=(const Modint &rhs) noexcept {
-        num = num * rhs.num % Modulus;
+    constexpr ModInt &operator*=(const ModInt &rhs) noexcept {
+        num = static_cast<i64>(1LL * num * rhs.num % Modulus);
         return *this;
     }
-    constexpr Modint &operator/=(Modint &rhs) noexcept {
-        *this *= rhs.inverse();
+    constexpr ModInt &operator/=(const ModInt &rhs) noexcept {
+        (*this) *= rhs.inverse();
         return *this;
     }
-    constexpr bool operator==(const Modint &rhs) const {
+
+    constexpr bool operator==(const ModInt &rhs) const {
         return num == rhs.num;
     }
-    constexpr bool operator!=(const Modint &rhs) const {
+    constexpr bool operator!=(const ModInt &rhs) const {
         return num != rhs.num;
     }
 
     /* friend */
-    friend std::ostream& operator<<(std::ostream& os, const Modint& rhs) {
+    friend std::ostream& operator<<(std::ostream& os, const ModInt& rhs) {
         return os << rhs.num;
     }
-    friend std::istream &operator>>(std::istream &is, Modint &rhs) {
-        u64 t;
+    friend std::istream &operator>>(std::istream &is, ModInt &rhs) {
+        i64 t;
         is >> t;
-        rhs = Modint<Modulus>(t);
+        rhs = ModInt<Modulus>(t);
         return (is);
     }
 
-    static u64 getMod() { return Modulus; }
+    static i64 getMod() { return Modulus; }
 
-    Modint pow(u64 n) const {
-        Modint ret(1), mul(n);
+    ModInt pow(i64 n) const {
+        i64 a = 1, p = num;
         while (n > 0) {
-            if (n & 1)
-                ret *= mul;
-            mul *= mul;
-            n >>= 1;
+            if (n % 2 == 0) {
+                p = (p * p) % Modulus; 
+                n /= 2;
+            }
+            else {
+                a = (a * p) % Modulus;
+                n--;
+            }
         }
-        return ret;
+        return ModInt(a);
+    }
+    ModInt& operator^(i64 n) {
+        *this = (*this).pow(n);
+        return *this;
     }
 
-    Modint inverse() const {
-        u64 a = num, b = Modulus, u = 1, v = 0, t;
+    ModInt inverse() const {
+        i64 a = num;
+        i64 b = Modulus, u = 1, v = 0, t;
         while (b > 0) {
             t = a / b;
-            std::swap(a -= t * b, b);
-            std::swap(u -= t * v, v);
+            a -= t * b; std::swap(a, b);
+            u -= t * v; std::swap(u, v);
         }
-        return Modint(u);
+        return ModInt(u);
     }
+
 };
 } // namespace eevee

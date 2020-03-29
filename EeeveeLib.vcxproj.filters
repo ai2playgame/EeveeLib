@@ -25,6 +25,9 @@
     <Filter Include="ヘッダー ファイル\math\calculate">
       <UniqueIdentifier>{1279fd70-6df6-4212-830e-e3a0352da1a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\math\graph">
+      <UniqueIdentifier>{6426ced1-7806-410b-89d5-318b3d9d3a23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EeeveeLib.cpp">
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="include\eevee\math\tree\unionFind.hpp">
       <Filter>ヘッダー ファイル\math\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eevee\math\graph\WeightedUndirectedGraph.hpp">
+      <Filter>ヘッダー ファイル\math\graph</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@
   <ItemGroup>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="TestModint.cpp" />
+    <ClCompile Include="TestUnionFind.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

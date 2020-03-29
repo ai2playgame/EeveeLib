@@ -19,6 +19,12 @@
     <Filter Include="ヘッダー ファイル\math\modint">
       <UniqueIdentifier>{c5d1f79c-64d0-481b-9924-36650c57e631}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\math\tree">
+      <UniqueIdentifier>{f04b6fdf-6633-42f5-adb2-97ef198a5c65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\math\calculate">
+      <UniqueIdentifier>{1279fd70-6df6-4212-830e-e3a0352da1a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EeeveeLib.cpp">
@@ -31,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="include\eevee\math\modint\modint.hpp">
       <Filter>ヘッダー ファイル\math\modint</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eevee\math\tree\unionFind.hpp">
+      <Filter>ヘッダー ファイル\math\tree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

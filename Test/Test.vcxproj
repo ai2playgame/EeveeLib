@@ -24,6 +24,7 @@
   <ItemGroup>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="testDijkstra.cpp" />
+    <ClCompile Include="TestGcdAndLcm.cpp" />
     <ClCompile Include="TestModint.cpp" />
     <ClCompile Include="TestUnionFind.cpp" />
   </ItemGroup>

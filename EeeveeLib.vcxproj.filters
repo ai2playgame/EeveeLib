@@ -47,5 +47,8 @@
     <ClInclude Include="include\eevee\math\graph\WeightedUndirectedGraph.hpp">
       <Filter>ヘッダー ファイル\math\graph</Filter>
     </ClInclude>
+    <ClInclude Include="include\eevee\math\calculate\integer.hpp">
+      <Filter>ヘッダー ファイル\math\calculate</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,10 +22,12 @@
     <ClInclude Include="test.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="testIndexed.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="testDijkstra.cpp" />
     <ClCompile Include="TestGcdAndLcm.cpp" />
     <ClCompile Include="TestModint.cpp" />
+    <ClCompile Include="testReversed.cpp" />
     <ClCompile Include="TestUnionFind.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -98,6 +100,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

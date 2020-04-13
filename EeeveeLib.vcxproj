@@ -153,11 +153,13 @@
     <ClCompile Include="EeeveeLib.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\eevee\Indexed.hpp" />
     <ClInclude Include="include\eevee\math\calculate\integer.hpp" />
     <ClInclude Include="include\eevee\math\graph\WeightedUndirectedGraph.hpp" />
     <ClInclude Include="include\eevee\math\math.hpp" />
     <ClInclude Include="include\eevee\math\modint\modint.hpp" />
     <ClInclude Include="include\eevee\math\tree\unionFind.hpp" />
+    <ClInclude Include="include\eevee\Reversed.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

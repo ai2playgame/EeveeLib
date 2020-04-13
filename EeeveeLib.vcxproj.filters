@@ -50,5 +50,11 @@
     <ClInclude Include="include\eevee\math\calculate\integer.hpp">
       <Filter>ヘッダー ファイル\math\calculate</Filter>
     </ClInclude>
+    <ClInclude Include="include\eevee\Indexed.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eevee\Reversed.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
